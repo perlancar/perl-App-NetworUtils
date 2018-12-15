@@ -70,6 +70,62 @@ sub turn_off_networking {
     [500, "Failed, no methods succeeded"];
 }
 
+$SPEC{'turn_on_wireless'} = {
+    v => 1.1,
+    summary => 'Turn on wireless networking',
+    description => <<'_',
+
+Will try:
+- nmcli
+
+_
+};
+sub turn_on_wireless {
+    my %args = @_;
+
+  NMCLI:
+    {
+        unless (which("nmcli")) {
+            log_trace "Cannot find nmcli, skipping using nmcli";
+            last;
+        }
+        log_trace "Using nmcli to turn wireless networking on";
+        system "nmcli", "radio", "wifi", "on";
+        unless ($?) {
+            return [200, "OK", undef, {'func.method'=>'nmcli'}];
+        }
+    }
+    [500, "Failed, no methods succeeded"];
+}
+
+$SPEC{'turn_off_wireless'} = {
+    v => 1.1,
+    summary => 'Turn off wireless networking',
+    description => <<'_',
+
+Will try:
+- nmcli
+
+_
+};
+sub turn_off_wireless {
+    my %args = @_;
+
+  NMCLI:
+    {
+        unless (which("nmcli")) {
+            log_trace "Cannot find nmcli, skipping using nmcli";
+            last;
+        }
+        log_trace "Using nmcli to turn wireless networking off";
+        system "nmcli", "radio", "wifi", "off";
+        unless ($?) {
+            return [200, "OK", undef, {'func.method'=>'nmcli'}];
+        }
+    }
+    [500, "Failed, no methods succeeded"];
+}
+
 $SPEC{'networking_is_on'} = {
     v => 1.1,
     summary => 'Return true when networking is on, or 0 otherwise',
