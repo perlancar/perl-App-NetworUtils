@@ -96,10 +96,9 @@ sub networking_is_on {
         $out =~ s/\R//;
 
         if ($out =~ /none/) {
-            return [200, "OK", 0, {'func.method'=>'nmcli', 'cmdline.result'=>'Networking is off ($out)', 'cmdline.exit_code'=>0}];
+            return [200, "OK", 0, {'func.method'=>'nmcli', 'cmdline.result'=>"Networking is off ($out)", 'cmdline.exit_code'=>0}];
         } else {
-            return [200, "OK", 1, {'func.method'=>'nmcli', 'cmdline.result'=>'Networking is on ($out)', 'cmdline.exit_code'=>0}];
-            last;
+            return [200, "OK", 1, {'func.method'=>'nmcli', 'cmdline.result'=>"Networking is on ($out)", 'cmdline.exit_code'=>0}];
         }
     }
     [500, "Failed, no methods succeeded"];
