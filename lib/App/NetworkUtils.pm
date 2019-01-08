@@ -14,6 +14,11 @@ use IPC::System::Options 'system', 'readpipe', -log=>1;
 
 our %SPEC;
 
+$SPEC{':package'} = {
+    v => 1.1,
+    summary => 'Command-line utilities related to networking',
+};
+
 $SPEC{'turn_on_networking'} = {
     v => 1.1,
     summary => 'Turn on networking',
