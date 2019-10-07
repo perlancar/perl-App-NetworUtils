@@ -1,3 +1,9 @@
+0.005   2019-10-07  Released-By: PERLANCAR; Urgency: medium
+
+	- Add shorter CLI's: turn-wireless-{off,on} -> wl{off,on},
+	  turn-networking-{off,on} -> net{off,on}.
+
+
 0.004   2019-06-15  Released-By: PERLANCAR
 
 	- [ux] Add CLI aliases: turn-{wireless,networking}-{off,on} ->
